@@ -1,4 +1,3 @@
-import Upload from '../upload/Upload';
 import './newPrompt.css'
 import { useEffect, useRef, useState } from 'react';
 import { IKImage } from "imagekitio-react";
@@ -16,6 +15,22 @@ const NewPrompt = ({data} ) => {
         aiData:{},
     }) 
 
+    // Add check for empty/undefined data
+    if (!data) {
+        return (
+            <div className="message">
+                Start a new chat by typing a message below.
+                <div className='endChat' ref={endRef}></div>
+                <form className='newForm' onSubmit={handleSubmit} ref={formRef}>
+                    <input id='file' type='file' multiple={false} hidden />
+                    <input type="text" name='text' placeholder='Ask anything...' />
+                    <button>
+                        <img src="/arrow.png" alt="" />
+                    </button>
+                </form>
+            </div>
+        );
+    }
 
     const chat = model.startChat({
         history: [
@@ -109,13 +124,13 @@ const NewPrompt = ({data} ) => {
     const hasRun = useRef(false);
 
   useEffect(() => {
-    if (!hasRun.current) {
+    if (!hasRun.current && data) {
       if (data?.history?.length === 1) {
         add(data.history[0].parts[0].text, true);
       }
     }
     hasRun.current = true;
-  }, []);
+  }, [data]);
 
 
 

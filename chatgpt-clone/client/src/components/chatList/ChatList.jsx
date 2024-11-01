@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import './chatList.css'
-import {Link} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 
 const ChatList = () => {
+
+    const navigate = useNavigate();
 
     const { isPending, error, data } = useQuery({
         queryKey: ["userChats"],
@@ -13,14 +15,14 @@ const ChatList = () => {
       });
 
       const handleExit = () => {
-        window.location.href = 'http://localhost:3001/game/';
+        navigate('/game'); 
       };
 
     return (
         <div className='chatList'>
           <hr/>
+          <Link onClick={handleExit}>Exit</Link>
             <Link to="/dashboard">New Chat</Link>
-            <Link onClick={handleExit}>Exit</Link>
             <hr/>
             <span className='title'>RECENT CHATS</span>
             <div className='list'>

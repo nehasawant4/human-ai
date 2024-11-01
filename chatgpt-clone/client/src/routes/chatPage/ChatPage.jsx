@@ -57,3 +57,8 @@ const ChatPage = () => {
     )
 }
 export default ChatPage
+
+// This component displays a chat interface that shows messages with text or images, depending on the chat history. 
+// It fetches chat data from an API using React Query, handles loading and error states, and displays messages in either 
+// Markdown or as images. Users can see a chat history and add new prompts through the NewPrompt component. The page is styled 
+// using a CSS file, and images are optimized using ImageKit.

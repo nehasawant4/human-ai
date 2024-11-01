@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './DemoChat.css'; // Create a corresponding CSS file
+import {useNavigate } from 'react-router-dom';
 
 function DemoChat() {
   const [input, setInput] = useState('');
 
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -15,7 +17,7 @@ function DemoChat() {
   };
 
   const handleExit = () => {
-    window.location.href = 'http://localhost:5173/';
+    navigate('/dashboard'); 
   };
 
   return (

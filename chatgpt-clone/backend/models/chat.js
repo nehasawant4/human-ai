@@ -6,6 +6,10 @@ const chatSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    playerId: {
+      type: String,
+      required: true,
+    },
     history: [
       {
         role: {
@@ -32,3 +36,7 @@ const chatSchema = new mongoose.Schema(
 );
 
 export default mongoose.models.chat || mongoose.model("chat", chatSchema);
+
+// This code defines a chat model for MongoDB using Mongoose. It describes how the chat data should be structured, with 
+// fields for the user ID, the player ID, the chat history (with messages that have text and optional images), and timestamps for record-keeping. 
+// The model is used to store and retrieve chat data in a MongoDB database.
